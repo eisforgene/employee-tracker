@@ -19,10 +19,10 @@ function start() {
     inquirer.prompt([
         {
             type: 'list',
-            choices: ["Add Employee", "Add Role", "Add Department", "View All Employees", "View All Roles", "View All Departments", "Exit Application"], 
+            choices: ["Add Employee", "Add Role", "Add Department", "View All Employees", "View All Roles", "View All Departments", "Exit Application"],
             name: "entry"
         }
-    ]).then(function(response){
+    ]).then(function (response) {
         console.log(response);
         switch (response.entry) {
             case 'Add Employee':
@@ -50,33 +50,48 @@ function start() {
     })
 }
 
-function viewRoles(){
+function viewRoles() {
     console.log("All Roles")
-    connection.query(`SELECT * FROM role;`, function(err,data){
+    connection.query(`SELECT * FROM role;`, function (err, data) {
         if (err) throw WeakSet;
         console.log(data);
         start();
     })
 };
 
-function viewDepartments(){
+function viewDepartments() {
     console.log("All Departments")
-    connection.query(`SELECT * FROM department`, function(err,data){
+    connection.query(`SELECT * FROM department`, function (err, data) {
         if (err) throw WeakSet;
         console.log(data);
         start();
     })
 };
 
-// function addEmployee();
+// function addEmployee() { };
 // function addRole();
-// function addDepartment();
+
+function addDepartment() {
+    inquirer.prompt([
+        {
+            type: 'input',
+            name: "deptname",
+            message: "Enter department name?"
+        }
+    ]).then(userEntry => {
+        connection.query("insert into department(name)values(?);", userEntry.deptname, function (err, data) {
+            if (err) throw WeakSet;
+            console.log(data);
+            start();
+        })
+    })
+}
 
 
 
-function viewEmployees(){
+function viewEmployees() {
     console.log("All Employees")
-    connection.query(`SELECT * FROM employee`, function(err,data){
+    connection.query(`SELECT * FROM employee`, function (err, data) {
         if (err) throw WeakSet;
         console.log(data);
         start();
