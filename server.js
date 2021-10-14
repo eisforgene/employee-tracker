@@ -50,6 +50,24 @@ function start() {
     })
 }
 
+function viewRoles(){
+    console.log("All Roles")
+    connection.query(`SELECT * FROM role;`, function(err,data){
+        if (err) throw WeakSet;
+        console.log(data);
+        start();
+    })
+};
+
+function viewDepartments(){
+    console.log("All Departments")
+    connection.query(`SELECT * FROM department`, function(err,data){
+        if (err) throw WeakSet;
+        console.log(data);
+        start();
+    })
+};
+
 // function addEmployee();
 // function addRole();
 // function addDepartment();
@@ -57,16 +75,13 @@ function start() {
 
 
 function viewEmployees(){
-    console.log("All Employeed")
-    connection.query(`SELECT * FROM employee`)
-    .then(function(data){
-        // console.table(data);
-        // console-table(data);
-        console.log(data)
-        start()
-    }).catch(err => 
-        console.log("Err",err)
-        )
+    console.log("All Employees")
+    connection.query(`SELECT * FROM employee`, function(err,data){
+        if (err) throw WeakSet;
+        console.log(data);
+        start();
+    })
+
 };
 
 
