@@ -87,8 +87,6 @@ function addDepartment() {
     })
 }
 
-
-
 function viewEmployees() {
     console.log("All Employees")
     connection.query(`SELECT * FROM employee`, function (err, data) {
