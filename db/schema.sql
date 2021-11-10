@@ -1,4 +1,9 @@
+DROP TABLE IF EXISTS employee;
+DROP TABLE IF EXISTS role;
+DROP TABLE IF EXISTS department;
+
 CREATE DATABASE employee_tracker;
+
 USE employee_tracker;
 
 CREATE TABLE department(id int primary key auto_increment, name varchar(30));
